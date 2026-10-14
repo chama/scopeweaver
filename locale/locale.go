@@ -25,6 +25,8 @@ const (
 	En Lang = "en"
 	// Ko is Korean, the selectable alternative.
 	Ko Lang = "ko"
+	// Ja is Japanese, the selectable alternative.
+	Ja Lang = "ja"
 )
 
 // Default is the fallback language when nothing else is negotiated.
@@ -38,7 +40,7 @@ const CookieName = "scopeweaver_locale"
 const QueryParam = "lang"
 
 // Supported reports whether l is a language ScopeWeaver ships translations for.
-func Supported(l Lang) bool { return l == En || l == Ko }
+func Supported(l Lang) bool { return l == En || l == Ko || l == Ja }
 
 // Normalize parses a raw locale token (e.g. "en", "EN", "en-US", "ko_KR") into a
 // supported Lang. ok is false when the token does not map to a supported
@@ -57,6 +59,8 @@ func Normalize(s string) (Lang, bool) {
 		return En, true
 	case Ko:
 		return Ko, true
+	case Ja:
+		return Ja, true
 	default:
 		return Default, false
 	}

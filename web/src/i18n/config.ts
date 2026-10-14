@@ -2,7 +2,7 @@
 // and the node tests. Keep this module free of DOM access and path aliases so
 // `node --test` can import it directly.
 
-export const LOCALES = ["en", "ko"] as const;
+export const LOCALES = ["en", "ko", "ja"] as const;
 export type Locale = (typeof LOCALES)[number];
 
 export const DEFAULT_LOCALE: Locale = "en";
@@ -20,11 +20,13 @@ export const LOCALE_QUERY_PARAM = "lang";
 export const LOCALE_NATIVE_NAMES: Record<Locale, string> = {
   en: "English",
   ko: "한국어",
+  ja: "日本語",
 };
 
 const INTL_LOCALES: Record<Locale, string> = {
   en: "en-US",
   ko: "ko-KR",
+  ja: "ja-JP",
 };
 
 export function isLocale(value: unknown): value is Locale {
@@ -51,8 +53,11 @@ export function readCookieLocale(cookie: string): Locale | null {
   for (const part of cookie.split(";")) {
     const [name, ...rest] = part.trim().split("=");
     if (name === LOCALE_COOKIE) {
-      try { return normalizeLocale(decodeURIComponent(rest.join("="))); }
-      catch { return null; }
+      try {
+        return normalizeLocale(decodeURIComponent(rest.join("=")));
+      } catch {
+        return null;
+      }
     }
   }
   return null;

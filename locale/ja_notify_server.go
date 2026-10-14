@@ -1,0 +1,42 @@
+package locale
+
+// Japanese translations for notification delivery/log and channel-config
+// messages (see server_notify.go). These appear in the System logs page and in
+// notification channel-config toasts.
+func init() {
+	RegisterJa("[notify] Event fan-out failed: %v", "[notify] イベントのファンアウトに失敗しました: %v")
+	RegisterJa("[notify] Channel lookup failed: %v", "[notify] チャネルの検索に失敗しました: %v")
+	RegisterJa("[notify] Realtime delivery claim failed channel=%d: %v", "[notify] リアルタイム配信のクレームに失敗 channel=%d: %v")
+	RegisterJa("Channel kind %q is not registered", "チャネルの種類 %q が登録されていません")
+	RegisterJa("[notify] Digest batch check failed channel=%d: %v", "[notify] ダイジェストバッチの確認に失敗 channel=%d: %v")
+	RegisterJa("[notify] Digest batch claim failed channel=%d: %v", "[notify] ダイジェストバッチのクレームに失敗 channel=%d: %v")
+	RegisterJa("Event snapshot cannot be parsed; this finding cannot be rendered as a message", "イベントスナップショットを解析できないため、この発見事項をメッセージとして表示できません")
+	RegisterJa("[notify] Could not mark invalid-snapshot deliveries failed channel=%s ids=%v: %v", "[notify] 無効なスナップショットの配信を失敗として記録できませんでした channel=%s ids=%v: %v")
+	RegisterJa("[notify] Skipped %d deliveries with invalid snapshots channel=%d", "[notify] 無効なスナップショットの配信 %d 件をスキップ channel=%d")
+	RegisterJa("[notify] Channel reported %d delivered but only %d were submitted channel=%s; treating all as delivered", "[notify] チャネルは配信 %d 件を報告しましたが、提出は %d 件のみです channel=%s。すべて配信済みとして扱います")
+	RegisterJa("[notify] Could not mark deliveries sent channel=%s ids=%v: %v", "[notify] 配信を送信済みとして記録できませんでした channel=%s ids=%v: %v")
+	RegisterJa("Channel length limit reached; delivered the first %d items, remaining items deferred to the next batch", "チャネルの長さ上限に達したため、先頭 %d 件を配信し、残りは次のバッチに繰り越しました")
+	RegisterJa("[notify] Could not queue remaining segments channel=%s ids=%v: %v", "[notify] 残りのセグメントをキューに登録できませんでした channel=%s ids=%v: %v")
+	RegisterJa("Channel did not report a delivered count (delivered=%d)", "チャネルが配信件数を報告しませんでした（delivered=%d）")
+	RegisterJa("[notify] Could not mark failed status channel=%s ids=%v: %v", "[notify] 失敗ステータスを記録できませんでした channel=%s ids=%v: %v")
+	RegisterJa("Still failed after %d attempts: %s", "%d 回の試行後も失敗しました: %s")
+	RegisterJa("[notify] Delivery rescheduling failed channel=%s ids=%v: %v", "[notify] 配信の再スケジュールに失敗 channel=%s ids=%v: %v")
+	RegisterJa("[notify] Delivery failed channel=%d kind=%s permanent=%d exhausted=%d pending_retry=%d: %s", "[notify] 配信に失敗 channel=%d kind=%s permanent=%d exhausted=%d pending_retry=%d: %s")
+	RegisterJa("[notify] Skipping invalid snapshot in digest delivery=%d: %v", "[notify] ダイジェストで無効なスナップショットをスキップ delivery=%d: %v")
+	RegisterJa("All %d deliveries in the digest batch had invalid snapshots", "ダイジェストバッチの配信 %d 件すべてでスナップショットが無効でした")
+	RegisterJa("[notify] Asset-name lookup failed finding=%d: %v", "[notify] 資産名の検索に失敗 finding=%d: %v")
+	RegisterJa("Delivery %d has an empty event snapshot", "配信 %d のイベントスナップショットが空です")
+	RegisterJa("Parse event snapshot for delivery %d: %w", "配信 %d のイベントスナップショットの解析: %w")
+	RegisterJa("Request body is not valid JSON: ", "リクエストボディが有効な JSON ではありません: ")
+	RegisterJa("Invalid channel kind; choose: %s", "チャネルの種類が無効です。次から選んでください: %s")
+	RegisterJa("Channel name is required", "チャネル名が必要です")
+	RegisterJa("Invalid delivery mode; choose realtime or digest", "配信モードが無効です。realtime または digest を選んでください")
+	RegisterJa("Rate limit cannot be negative", "レート制限を負の値にはできません")
+	RegisterJa("Invalid channel ID", "チャネル ID が無効です")
+	RegisterJa("Channel name cannot be empty", "チャネル名を空にはできません")
+	RegisterJa("Test message · Channel configured successfully", "テストメッセージ · チャネルの設定は正常です")
+	RegisterJa("Connectivity test", "接続テスト")
+	RegisterJa("This is a ScopeWeaver notification-channel test. Receiving it confirms the channel configuration works.", "これは ScopeWeaver の通知チャネルのテストです。これを受信できれば、チャネルの設定は正常です。")
+	RegisterJa("Invalid delivery ID", "配信 ID が無効です")
+	RegisterJa("Notification channel not found", "通知チャネルが見つかりません")
+}
