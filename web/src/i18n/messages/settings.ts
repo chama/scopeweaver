@@ -11,25 +11,43 @@ export const en = {
   judgeUsageDay: "{date} · {calls} calls · {tokens} tokens",
 
   setupUnavailableTitle: "Cannot confirm setup status",
-  setupUnavailableHelp: "The backend or database is temporarily unavailable. Setup is disabled to protect any existing password. Restore the service and retry.",
-  captureDisabled: "When disabled (the default), no traffic is recorded. Agents receive <b>neither proxy settings nor traffic tools</b>, and their prompts contain <b>no proxy instructions</b>. Switching rebuilds Agents immediately to apply the change.",
-  binding: "Off by default. When enabled, the report Agent triggered on vulnerability creation reviews existing HTTP requests and responses, links the relevant traffic, then writes the report. <b>Inspecting packets and making extra tool calls increases token usage.</b>",
-  proxy: "All Agents’ <b>target traffic</b> uses this outbound proxy to hide the source IP or use a jump host. Supports <b>HTTP, HTTPS, and SOCKS5</b>, optionally with <code>user:pass</code> authentication. Leave blank for a direct connection.",
-  proxyCapture: "With <b>traffic capture enabled</b>, this is the recording proxy’s <b>upstream</b>: traffic is recorded before forwarding. With capture disabled, the proxy is injected directly into Agent Bash/WebFetch. It is independent of web search and LLM proxies.",
-  proxySocks: "<b>SOCKS5 note:</b> With capture disabled, each command-line tool must support <code>ALL_PROXY</code>. curl does; some tools may ignore it. For SOCKS5, enabling capture is recommended: the MITM proxy establishes the connection directly, without requiring tool support.",
-  constraints: "When enabled, each task’s <b>operational constraints</b>—the allow/deny entries in Task overview—are included in the Agent’s system prompt to define exploration boundaries, such as testing only the current port or prohibiting brute force.",
-  constraintTargets: "Control injection separately for the <b>planner</b> and <b>worker</b>; both are enabled by default. Changes apply on the next read without rebuilding Agents. When injection is disabled, that Agent no longer sees the constraints.",
-  compression: "<b>noa context compression</b> uses the model to compress long conversation histories (norma v0.4.0). When enabled, <b>planner, worker, main-Agent, and chat</b> contexts use noa instead of built-in compression. Original content is archived in the task working directory for review. Changes affect subsequent runs without rebuilding Agents; disabling immediately restores built-in compression.",
-  webSearch: "This is the web search <b>master switch and source configuration</b>. Enable it first, then enable <b>web_search in each Agent’s settings</b>. Search returns titles, links, and snippets; WebFetch retrieves full content. Web search <b>does not use the recording proxy</b> and is independent of traffic capture.",
-  searchSources: "Available sources are <b>DuckDuckGo (ddgs)</b> without an API key, <b>Brave’s free tier</b> with a Brave API key, <b>Tavily</b> with a Tavily API key, or <b>DeepSeek</b> using the current LLM profile. The master switch must be on before Agents can enable web search.",
-  deepseekRequirements: "This source reuses the <b>currently active LLM profile</b>. It supports <b>only official DeepSeek models</b>, and the profile <b>must use the Anthropic protocol</b>. DeepSeek’s OpenAI endpoint does not support server-side search. Switching LLM profiles may make this source unavailable.",
-  deepseekBehavior: "Unlike other sources, search runs <b>on DeepSeek’s servers</b>. Each search adds a model call and token cost. Search requests <b>bypass the outbound proxy above</b> and <b>are not recorded as traffic</b>. Results contain <b>only titles and links</b>, without snippets; use WebFetch for full content.",
-  python: "Custom <b>script</b> tools use this Python interpreter. It is detected at startup, preferring python3. Enter an absolute path to a virtual environment or specific version, or leave blank for automatic runtime detection.",
-  workers: "Number of Worker Agents running concurrently per task (default: 3). More Workers increase parallel exploration and cost. Changes <b>apply to tasks started afterward</b>; running tasks are unaffected.",
-  sendPreference: "This preference is stored <b>only in this browser</b> and does not sync with your account. Set it again after changing browsers or clearing site data.",
+  setupUnavailableHelp:
+    "The backend or database is temporarily unavailable. Setup is disabled to protect any existing password. Restore the service and retry.",
+  captureDisabled:
+    "When disabled (the default), no traffic is recorded. Agents receive <b>neither proxy settings nor traffic tools</b>, and their prompts contain <b>no proxy instructions</b>. Switching rebuilds Agents immediately to apply the change.",
+  binding:
+    "Off by default. When enabled, the report Agent triggered on vulnerability creation reviews existing HTTP requests and responses, links the relevant traffic, then writes the report. <b>Inspecting packets and making extra tool calls increases token usage.</b>",
+  proxy:
+    "All Agents’ <b>target traffic</b> uses this outbound proxy to hide the source IP or use a jump host. Supports <b>HTTP, HTTPS, and SOCKS5</b>, optionally with <code>user:pass</code> authentication. Leave blank for a direct connection.",
+  proxyCapture:
+    "With <b>traffic capture enabled</b>, this is the recording proxy’s <b>upstream</b>: traffic is recorded before forwarding. With capture disabled, the proxy is injected directly into Agent Bash/WebFetch. It is independent of web search and LLM proxies.",
+  proxySocks:
+    "<b>SOCKS5 note:</b> With capture disabled, each command-line tool must support <code>ALL_PROXY</code>. curl does; some tools may ignore it. For SOCKS5, enabling capture is recommended: the MITM proxy establishes the connection directly, without requiring tool support.",
+  constraints:
+    "When enabled, each task’s <b>operational constraints</b>—the allow/deny entries in Task overview—are included in the Agent’s system prompt to define exploration boundaries, such as testing only the current port or prohibiting brute force.",
+  constraintTargets:
+    "Control injection separately for the <b>planner</b> and <b>worker</b>; both are enabled by default. Changes apply on the next read without rebuilding Agents. When injection is disabled, that Agent no longer sees the constraints.",
+  compression:
+    "<b>noa context compression</b> uses the model to compress long conversation histories (norma v0.4.0). When enabled, <b>planner, worker, main-Agent, and chat</b> contexts use noa instead of built-in compression. Original content is archived in the task working directory for review. Changes affect subsequent runs without rebuilding Agents; disabling immediately restores built-in compression.",
+  webSearch:
+    "This is the web search <b>master switch and source configuration</b>. Enable it first, then enable <b>web_search in each Agent’s settings</b>. Search returns titles, links, and snippets; WebFetch retrieves full content. Web search <b>does not use the recording proxy</b> and is independent of traffic capture.",
+  searchSources:
+    "Available sources are <b>DuckDuckGo (ddgs)</b> without an API key, <b>Brave’s free tier</b> with a Brave API key, <b>Tavily</b> with a Tavily API key, or <b>DeepSeek</b> using the current LLM profile. The master switch must be on before Agents can enable web search.",
+  deepseekRequirements:
+    "This source reuses the <b>currently active LLM profile</b>. It supports <b>only official DeepSeek models</b>, and the profile <b>must use the Anthropic protocol</b>. DeepSeek’s OpenAI endpoint does not support server-side search. Switching LLM profiles may make this source unavailable.",
+  deepseekBehavior:
+    "Unlike other sources, search runs <b>on DeepSeek’s servers</b>. Each search adds a model call and token cost. Search requests <b>bypass the outbound proxy above</b> and <b>are not recorded as traffic</b>. Results contain <b>only titles and links</b>, without snippets; use WebFetch for full content.",
+  python:
+    "Custom <b>script</b> tools use this Python interpreter. It is detected at startup, preferring python3. Enter an absolute path to a virtual environment or specific version, or leave blank for automatic runtime detection.",
+  workers:
+    "Number of Worker Agents running concurrently per task (default: 3). More Workers increase parallel exploration and cost. Changes <b>apply to tasks started afterward</b>; running tasks are unaffected.",
+  sendPreference:
+    "This preference is stored <b>only in this browser</b> and does not sync with your account. Set it again after changing browsers or clearing site data.",
   maxConcurrentTitle: "Max concurrent LLM requests",
-  maxConcurrentDesc: "Caps simultaneous in-flight LLM requests per profile (default: 0 = unlimited). Each profile's provider gets its own semaphore, shared across all agents on that profile. Use this when your backend enforces a hard per-access concurrency limit (e.g. <code>at most 2 concurrent requests per access</code>) — the per-second/per-minute rate limit only smooths rate and still lets bursts overlap. Changes rebuild providers and take effect on the next request.",
-  updateLauncher: "One-click updates rely on the supervisor script to restart the application. Start with <code>start.sh</code> (Windows: <code>start.bat</code>). Running the binary directly does not restart it automatically after exit.",
+  maxConcurrentDesc:
+    "Caps simultaneous in-flight LLM requests per profile (default: 0 = unlimited). Each profile's provider gets its own semaphore, shared across all agents on that profile. Use this when your backend enforces a hard per-access concurrency limit (e.g. <code>at most 2 concurrent requests per access</code>) — the per-second/per-minute rate limit only smooths rate and still lets bursts overlap. Changes rebuild providers and take effect on the next request.",
+  updateLauncher:
+    "One-click updates rely on the supervisor script to restart the application. Start with <code>start.sh</code> (Windows: <code>start.bat</code>). Running the binary directly does not restart it automatically after exit.",
   pagination: "{from}–{to} / {total} records",
 };
 export const ko: Record<keyof typeof en, string> = {
@@ -44,24 +62,93 @@ export const ko: Record<keyof typeof en, string> = {
   judgeUsageDay: "{date} · 호출 {calls}회 · 토큰 {tokens}개",
 
   setupUnavailableTitle: "초기 설정 상태를 확인할 수 없습니다",
-  setupUnavailableHelp: "백엔드 또는 데이터베이스를 일시적으로 사용할 수 없습니다. 기존 암호를 보호하기 위해 초기 설정을 비활성화했습니다. 서비스를 복구한 후 다시 시도하세요.",
-  captureDisabled: "끄면(기본값) 트래픽을 기록하지 않습니다. 에이전트에 <b>프록시 설정과 트래픽 도구를 제공하지 않으며</b>, 프롬프트에도 <b>프록시 안내를 포함하지 않습니다</b>. 전환하면 에이전트를 즉시 재구성하여 적용합니다.",
-  binding: "기본적으로 꺼져 있습니다. 켜면 취약점 등록 시 보고서 에이전트가 기존 HTTP 요청과 응답을 검토하고 관련 트래픽을 연결한 후 보고서를 작성합니다. <b>패킷 확인과 추가 도구 호출로 토큰 사용량이 늘어납니다.</b>",
-  proxy: "모든 에이전트의 <b>대상 트래픽</b>을 이 프록시로 보내 원본 IP를 숨기거나 중계 호스트를 사용할 수 있습니다. <b>HTTP, HTTPS, SOCKS5</b>와 선택적 <code>user:pass</code> 인증을 지원합니다. 비우면 직접 연결합니다.",
-  proxyCapture: "<b>트래픽 캡처를 켜면</b> 기록 프록시의 <b>상위 프록시</b>로 사용하여 트래픽을 기록한 후 전달합니다. 캡처를 끄면 에이전트의 Bash/WebFetch에 프록시 설정을 직접 제공합니다. 웹 검색 및 LLM 프록시와는 독립적입니다.",
-  proxySocks: "<b>SOCKS5 참고:</b> 캡처를 끄면 각 명령줄 도구가 <code>ALL_PROXY</code>를 지원해야 합니다. curl은 지원하지만 일부 도구는 무시할 수 있습니다. SOCKS5에는 캡처 활성화를 권장합니다. MITM 프록시가 직접 연결하므로 도구의 지원 여부와 관계없이 적용됩니다.",
-  constraints: "켜면 각 작업의 <b>작업 제약 조건</b>을 에이전트 시스템 프롬프트에 포함합니다. 작업 개요에서 관리하는 allow/deny 항목으로, 현재 포트만 테스트하거나 무차별 대입을 금지하는 등 탐색 경계를 정합니다.",
-  constraintTargets: "<b>플래너</b>와 <b>워커</b>에 제공할지 각각 설정할 수 있으며 기본적으로 둘 다 켜져 있습니다. 에이전트를 재구성하지 않고 다음 읽기부터 적용합니다. 끄면 해당 에이전트는 제약 조건을 볼 수 없습니다.",
-  compression: "<b>noa 문맥 압축</b>은 모델이 긴 대화 기록을 직접 압축하는 기능입니다(norma v0.4.0). 켜면 <b>플래너, 워커, 메인 에이전트, 대화</b>에서 기본 압축 대신 noa를 사용합니다. 압축 전 원문은 검토할 수 있도록 작업 디렉터리에 보관합니다. 에이전트를 재구성하지 않고 이후 실행에 적용하며, 끄면 즉시 기본 압축으로 돌아갑니다.",
-  webSearch: "웹 검색의 <b>전체 전환 및 소스 설정</b>입니다. 먼저 이 기능을 켠 후 <b>각 에이전트 설정에서 web_search를 활성화</b>하세요. 검색은 제목, 링크, 요약을 반환하며 본문은 WebFetch가 가져옵니다. 웹 검색은 <b>기록 프록시를 사용하지 않으며</b> 트래픽 캡처와 독립적으로 동작합니다.",
-  searchSources: "검색 소스는 API 키가 필요 없는 <b>DuckDuckGo(ddgs)</b>, Brave API 키가 필요한 <b>Brave 무료 요금제</b>, Tavily API 키가 필요한 <b>Tavily</b>, 현재 LLM 프로필을 사용하는 <b>DeepSeek</b> 중에서 선택합니다. 전체 전환을 켜야 에이전트별 웹 검색을 활성화할 수 있습니다.",
-  deepseekRequirements: "이 소스는 <b>현재 활성 LLM 프로필</b>을 재사용합니다. <b>공식 DeepSeek 모델만 지원</b>하며 프로필은 <b>Anthropic 프로토콜을 사용해야 합니다</b>. DeepSeek의 OpenAI 엔드포인트는 서버 측 검색을 지원하지 않습니다. LLM 프로필을 바꾸면 이 소스를 사용할 수 없게 될 수 있습니다.",
-  deepseekBehavior: "다른 소스와 달리 검색을 <b>DeepSeek 서버에서 실행</b>합니다. 검색마다 모델 호출과 토큰 비용이 추가됩니다. 검색 요청은 <b>위의 외부 연결 프록시를 거치지 않으며</b> <b>트래픽 기록에도 포함되지 않습니다</b>. 결과에는 요약 없이 <b>제목과 링크만 포함</b>되므로 본문이 필요하면 WebFetch를 사용하세요.",
-  python: "사용자 지정 <b>script</b> 도구에서 사용할 Python 인터프리터입니다. 시작 시 python3를 우선하여 자동으로 찾습니다. 가상 환경 또는 특정 버전의 절대 경로를 입력하거나, 실행 시 자동으로 찾으려면 비워 두세요.",
-  workers: "작업마다 동시에 실행할 워커 에이전트 수입니다(기본값: 3). 늘리면 병렬 탐색과 비용이 증가합니다. 변경 사항은 <b>이후 시작하는 작업에 적용</b>하며 실행 중인 작업에는 영향을 주지 않습니다.",
-  sendPreference: "이 환경설정은 <b>현재 브라우저에만 저장</b>되며 계정과 동기화되지 않습니다. 브라우저를 바꾸거나 사이트 데이터를 지우면 다시 설정해야 합니다.",
+  setupUnavailableHelp:
+    "백엔드 또는 데이터베이스를 일시적으로 사용할 수 없습니다. 기존 암호를 보호하기 위해 초기 설정을 비활성화했습니다. 서비스를 복구한 후 다시 시도하세요.",
+  captureDisabled:
+    "끄면(기본값) 트래픽을 기록하지 않습니다. 에이전트에 <b>프록시 설정과 트래픽 도구를 제공하지 않으며</b>, 프롬프트에도 <b>프록시 안내를 포함하지 않습니다</b>. 전환하면 에이전트를 즉시 재구성하여 적용합니다.",
+  binding:
+    "기본적으로 꺼져 있습니다. 켜면 취약점 등록 시 보고서 에이전트가 기존 HTTP 요청과 응답을 검토하고 관련 트래픽을 연결한 후 보고서를 작성합니다. <b>패킷 확인과 추가 도구 호출로 토큰 사용량이 늘어납니다.</b>",
+  proxy:
+    "모든 에이전트의 <b>대상 트래픽</b>을 이 프록시로 보내 원본 IP를 숨기거나 중계 호스트를 사용할 수 있습니다. <b>HTTP, HTTPS, SOCKS5</b>와 선택적 <code>user:pass</code> 인증을 지원합니다. 비우면 직접 연결합니다.",
+  proxyCapture:
+    "<b>트래픽 캡처를 켜면</b> 기록 프록시의 <b>상위 프록시</b>로 사용하여 트래픽을 기록한 후 전달합니다. 캡처를 끄면 에이전트의 Bash/WebFetch에 프록시 설정을 직접 제공합니다. 웹 검색 및 LLM 프록시와는 독립적입니다.",
+  proxySocks:
+    "<b>SOCKS5 참고:</b> 캡처를 끄면 각 명령줄 도구가 <code>ALL_PROXY</code>를 지원해야 합니다. curl은 지원하지만 일부 도구는 무시할 수 있습니다. SOCKS5에는 캡처 활성화를 권장합니다. MITM 프록시가 직접 연결하므로 도구의 지원 여부와 관계없이 적용됩니다.",
+  constraints:
+    "켜면 각 작업의 <b>작업 제약 조건</b>을 에이전트 시스템 프롬프트에 포함합니다. 작업 개요에서 관리하는 allow/deny 항목으로, 현재 포트만 테스트하거나 무차별 대입을 금지하는 등 탐색 경계를 정합니다.",
+  constraintTargets:
+    "<b>플래너</b>와 <b>워커</b>에 제공할지 각각 설정할 수 있으며 기본적으로 둘 다 켜져 있습니다. 에이전트를 재구성하지 않고 다음 읽기부터 적용합니다. 끄면 해당 에이전트는 제약 조건을 볼 수 없습니다.",
+  compression:
+    "<b>noa 문맥 압축</b>은 모델이 긴 대화 기록을 직접 압축하는 기능입니다(norma v0.4.0). 켜면 <b>플래너, 워커, 메인 에이전트, 대화</b>에서 기본 압축 대신 noa를 사용합니다. 압축 전 원문은 검토할 수 있도록 작업 디렉터리에 보관합니다. 에이전트를 재구성하지 않고 이후 실행에 적용하며, 끄면 즉시 기본 압축으로 돌아갑니다.",
+  webSearch:
+    "웹 검색의 <b>전체 전환 및 소스 설정</b>입니다. 먼저 이 기능을 켠 후 <b>각 에이전트 설정에서 web_search를 활성화</b>하세요. 검색은 제목, 링크, 요약을 반환하며 본문은 WebFetch가 가져옵니다. 웹 검색은 <b>기록 프록시를 사용하지 않으며</b> 트래픽 캡처와 독립적으로 동작합니다.",
+  searchSources:
+    "검색 소스는 API 키가 필요 없는 <b>DuckDuckGo(ddgs)</b>, Brave API 키가 필요한 <b>Brave 무료 요금제</b>, Tavily API 키가 필요한 <b>Tavily</b>, 현재 LLM 프로필을 사용하는 <b>DeepSeek</b> 중에서 선택합니다. 전체 전환을 켜야 에이전트별 웹 검색을 활성화할 수 있습니다.",
+  deepseekRequirements:
+    "이 소스는 <b>현재 활성 LLM 프로필</b>을 재사용합니다. <b>공식 DeepSeek 모델만 지원</b>하며 프로필은 <b>Anthropic 프로토콜을 사용해야 합니다</b>. DeepSeek의 OpenAI 엔드포인트는 서버 측 검색을 지원하지 않습니다. LLM 프로필을 바꾸면 이 소스를 사용할 수 없게 될 수 있습니다.",
+  deepseekBehavior:
+    "다른 소스와 달리 검색을 <b>DeepSeek 서버에서 실행</b>합니다. 검색마다 모델 호출과 토큰 비용이 추가됩니다. 검색 요청은 <b>위의 외부 연결 프록시를 거치지 않으며</b> <b>트래픽 기록에도 포함되지 않습니다</b>. 결과에는 요약 없이 <b>제목과 링크만 포함</b>되므로 본문이 필요하면 WebFetch를 사용하세요.",
+  python:
+    "사용자 지정 <b>script</b> 도구에서 사용할 Python 인터프리터입니다. 시작 시 python3를 우선하여 자동으로 찾습니다. 가상 환경 또는 특정 버전의 절대 경로를 입력하거나, 실행 시 자동으로 찾으려면 비워 두세요.",
+  workers:
+    "작업마다 동시에 실행할 워커 에이전트 수입니다(기본값: 3). 늘리면 병렬 탐색과 비용이 증가합니다. 변경 사항은 <b>이후 시작하는 작업에 적용</b>하며 실행 중인 작업에는 영향을 주지 않습니다.",
+  sendPreference:
+    "이 환경설정은 <b>현재 브라우저에만 저장</b>되며 계정과 동기화되지 않습니다. 브라우저를 바꾸거나 사이트 데이터를 지우면 다시 설정해야 합니다.",
   maxConcurrentTitle: "최대 동시 LLM 요청 수",
-  maxConcurrentDesc: "프로필마다 동시에 진행 중인 LLM 요청 수를 제한합니다(기본값: 0 = 무제한). 각 프로필의 프로바이더는 자체 세마포어를 가지며, 해당 프로필의 모든 에이전트가 공유합니다. 백엔드가 접근당 동시 실행 상한(예: <code>at most 2 concurrent requests per access</code>)을 강제할 때 사용하세요. 초/분당 속도 제한은 요청 속도만 부드럽게 할 뿐 버스트가 겹치는 것은 막지 못합니다. 변경 시 프로바이더를 재구성하며 다음 요청부터 적용됩니다.",
-  updateLauncher: "원클릭 업데이트는 관리 스크립트로 애플리케이션을 재시작합니다. <code>start.sh</code>(Windows: <code>start.bat</code>)로 시작하세요. 실행 파일을 직접 실행하면 종료 후 자동으로 다시 시작되지 않습니다.",
+  maxConcurrentDesc:
+    "프로필마다 동시에 진행 중인 LLM 요청 수를 제한합니다(기본값: 0 = 무제한). 각 프로필의 프로바이더는 자체 세마포어를 가지며, 해당 프로필의 모든 에이전트가 공유합니다. 백엔드가 접근당 동시 실행 상한(예: <code>at most 2 concurrent requests per access</code>)을 강제할 때 사용하세요. 초/분당 속도 제한은 요청 속도만 부드럽게 할 뿐 버스트가 겹치는 것은 막지 못합니다. 변경 시 프로바이더를 재구성하며 다음 요청부터 적용됩니다.",
+  updateLauncher:
+    "원클릭 업데이트는 관리 스크립트로 애플리케이션을 재시작합니다. <code>start.sh</code>(Windows: <code>start.bat</code>)로 시작하세요. 실행 파일을 직접 실행하면 종료 후 자동으로 다시 시작되지 않습니다.",
   pagination: "{from}–{to} / 총 {total}건",
+};
+export const ja: Record<keyof typeof en, string> = {
+  judgeUsageTitle: "承認トークン使用量",
+  judgeUsageHelp: "プランナーおよびワーカーの呼び出しとは別に集計した、フォールバック承認モデルの累計使用量です。",
+  judgeUsageCalls: "承認呼び出し",
+  judgeUsageInput: "入力トークン",
+  judgeUsageOutput: "出力トークン",
+  judgeUsageCacheRead: "キャッシュ読み取り",
+  judgeUsageCacheWrite: "キャッシュ書き込み",
+  judgeUsageRecent: "過去 30 日間の日別の入力・出力トークン",
+  judgeUsageDay: "{date} · 呼び出し {calls} 回 · トークン {tokens} 個",
+
+  setupUnavailableTitle: "初期設定の状態を確認できません",
+  setupUnavailableHelp:
+    "バックエンドまたはデータベースが一時的に利用できません。既存のパスワードを保護するため、初期設定を無効にしています。サービスを復旧してから再試行してください。",
+  captureDisabled:
+    "無効（既定）の場合、トラフィックは記録されません。エージェントには<b>プロキシ設定もトラフィックツールも提供されず</b>、プロンプトにも<b>プロキシの指示は含まれません</b>。切り替えると変更を適用するためにエージェントを即座に再構成します。",
+  binding:
+    "既定では無効です。有効にすると、脆弱性の登録時に起動するレポートエージェントが既存の HTTP 要求と応答を確認し、関連するトラフィックを紐付けたうえでレポートを作成します。<b>パケットの確認と追加のツール呼び出しにより、トークン使用量が増えます。</b>",
+  proxy:
+    "すべてのエージェントの<b>対象トラフィック</b>はこの送信プロキシを経由し、送信元 IP を隠したり踏み台ホストを使用したりできます。<b>HTTP、HTTPS、SOCKS5</b> に対応し、任意で <code>user:pass</code> 認証を使えます。直接接続する場合は空欄にしてください。",
+  proxyCapture:
+    "<b>トラフィックキャプチャが有効</b>の場合、これは記録プロキシの<b>上流</b>です。トラフィックは転送前に記録されます。キャプチャが無効の場合、プロキシはエージェントの Bash/WebFetch に直接注入されます。Web 検索や LLM のプロキシとは独立しています。",
+  proxySocks:
+    "<b>SOCKS5 の注意:</b> キャプチャが無効の場合、各コマンドラインツールが <code>ALL_PROXY</code> に対応している必要があります。curl は対応していますが、一部のツールは無視することがあります。SOCKS5 ではキャプチャの有効化を推奨します。MITM プロキシが直接接続を確立するため、ツール側の対応は不要です。",
+  constraints:
+    "有効にすると、各タスクの<b>作業上の制約</b>（タスク概要の allow/deny エントリ）がエージェントのシステムプロンプトに含まれ、現在のポートのみをテストする、ブルートフォースを禁止するといった探索の境界を定めます。",
+  constraintTargets:
+    "<b>プランナー</b>と<b>ワーカー</b>のそれぞれについて注入を個別に制御できます。既定ではどちらも有効です。変更はエージェントを再構成せず次の読み取りから適用されます。注入を無効にすると、そのエージェントは制約を参照しなくなります。",
+  compression:
+    "<b>noa コンテキスト圧縮</b>は、モデルを用いて長い会話履歴を圧縮します（norma v0.4.0）。有効にすると、<b>プランナー、ワーカー、メインエージェント、チャット</b>のコンテキストで、組み込み圧縮の代わりに noa を使用します。圧縮前の原文は、確認できるようタスクの作業ディレクトリに保管されます。変更はエージェントを再構成せず以降の実行に影響し、無効にすると即座に組み込み圧縮に戻ります。",
+  webSearch:
+    "これは Web 検索の<b>全体スイッチおよびソース設定</b>です。まずこれを有効にし、次に<b>各エージェントの設定で web_search を有効化</b>してください。検索はタイトル・リンク・抜粋を返し、本文は WebFetch が取得します。Web 検索は<b>記録プロキシを使用せず</b>、トラフィックキャプチャとは独立して動作します。",
+  searchSources:
+    "利用できるソースは、API キー不要の <b>DuckDuckGo（ddgs）</b>、Brave API キーが必要な <b>Brave の無料プラン</b>、Tavily API キーが必要な <b>Tavily</b>、現在の LLM プロファイルを使用する <b>DeepSeek</b> です。エージェントごとの Web 検索を有効にするには、まず全体スイッチをオンにする必要があります。",
+  deepseekRequirements:
+    "このソースは<b>現在有効な LLM プロファイル</b>を再利用します。<b>公式の DeepSeek モデルのみに対応</b>し、プロファイルは <b>Anthropic プロトコルを使用している必要があります</b>。DeepSeek の OpenAI エンドポイントはサーバー側検索に対応していません。LLM プロファイルを切り替えると、このソースが使用できなくなる場合があります。",
+  deepseekBehavior:
+    "他のソースと異なり、検索は <b>DeepSeek のサーバー上</b>で実行されます。検索ごとにモデル呼び出しとトークンコストが追加されます。検索要求は<b>上記の送信プロキシを経由せず</b>、<b>トラフィックとして記録されません</b>。結果には<b>タイトルとリンクのみ</b>が含まれ抜粋はありません。本文が必要な場合は WebFetch を使用してください。",
+  python:
+    "カスタムの <b>script</b> ツールはこの Python インタープリターを使用します。起動時に python3 を優先して検出します。仮想環境や特定バージョンの絶対パスを入力するか、実行時に自動検出させる場合は空欄にしてください。",
+  workers:
+    "タスクごとに同時に実行するワーカーエージェントの数です（既定: 3）。増やすと並行探索とコストが増えます。変更は<b>以降に開始するタスクに適用</b>され、実行中のタスクには影響しません。",
+  sendPreference:
+    "この設定は<b>このブラウザーにのみ保存</b>され、アカウントとは同期されません。ブラウザーを変更したりサイトデータを消去したりした場合は、再度設定してください。",
+  maxConcurrentTitle: "LLM 同時リクエスト数の上限",
+  maxConcurrentDesc:
+    "プロファイルごとに、同時に進行中の LLM リクエスト数を制限します（既定: 0 = 無制限）。各プロファイルのプロバイダーは独自のセマフォを持ち、そのプロファイル上のすべてのエージェントで共有されます。バックエンドがアクセスごとの同時実行の上限（例: <code>at most 2 concurrent requests per access</code>）を強制する場合に使用してください。秒間／分間のレート制限は速度を平準化するだけで、バーストの重なりは防げません。変更するとプロバイダーを再構成し、次のリクエストから適用されます。",
+  updateLauncher:
+    "ワンクリック更新は、スーパーバイザースクリプトでアプリケーションを再起動します。<code>start.sh</code>（Windows: <code>start.bat</code>）で起動してください。バイナリを直接実行した場合、終了後に自動で再起動されません。",
+  pagination: "{from}–{to} / 全 {total} 件",
 };

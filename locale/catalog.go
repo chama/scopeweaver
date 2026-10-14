@@ -4,8 +4,9 @@ import "fmt"
 
 // catalog holds every localizable human message keyed by a stable message key,
 // then by language. English is authoritative: every key MUST have an En entry.
-// Korean entries are optional per key — a missing Ko falls back to En, and an
-// unknown key falls back to the key itself, so a lookup never panics.
+// Korean and Japanese entries are optional per key — a missing translation falls
+// back to En, and an unknown key falls back to the key itself, so a lookup never
+// panics.
 //
 // Keys are dotted, namespaced by domain (e.g. "api.task.not_found"). Interpolation
 // uses fmt verbs; pass args to T in the same order the verbs appear.
@@ -13,8 +14,10 @@ var catalog = map[string]map[Lang]string{}
 
 // Register adds (or overrides) catalog entries for a message key. Packages call
 // this from init() so their domain strings live next to the code that uses them
-// while the negotiation/formatting logic stays here. En is required.
-func Register(key string, en, ko string) {
+// while the negotiation/formatting logic stays here. En is required. An optional
+// trailing ja argument registers the Japanese entry inline; Japanese may also be
+// added separately via RegisterJa (keyed by the same message key).
+func Register(key string, en, ko string, ja ...string) {
 	m := catalog[key]
 	if m == nil {
 		m = map[Lang]string{}
@@ -24,12 +27,31 @@ func Register(key string, en, ko string) {
 	if ko != "" {
 		m[Ko] = ko
 	}
+	if len(ja) > 0 && ja[0] != "" {
+		m[Ja] = ja[0]
+	}
 }
 
-// RegisterAll bulk-registers entries: entries[key] = {En: ..., Ko: ...}.
+// RegisterJa adds (or overrides) the Japanese entry for an already-known message
+// key. The key is the same stable key passed to Register — for the bulk of this
+// catalog that key is the English source string itself. A missing English base
+// is tolerated: the entry is still recorded so a later Register can supply En.
+func RegisterJa(key, ja string) {
+	if ja == "" {
+		return
+	}
+	m := catalog[key]
+	if m == nil {
+		m = map[Lang]string{}
+		catalog[key] = m
+	}
+	m[Ja] = ja
+}
+
+// RegisterAll bulk-registers entries: entries[key] = {En: ..., Ko: ..., Ja: ...}.
 func RegisterAll(entries map[string]map[Lang]string) {
 	for key, langs := range entries {
-		Register(key, langs[En], langs[Ko])
+		Register(key, langs[En], langs[Ko], langs[Ja])
 	}
 }
 

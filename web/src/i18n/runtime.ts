@@ -47,7 +47,9 @@ export function initializeLocale() {
 
 // Rendering starts in English, matching the static-export hydration snapshot.
 // The provider initializes persisted preferences after hydration.
-export function getLocale(): Locale { return current; }
+export function getLocale(): Locale {
+  return current;
+}
 
 function persist(locale: Locale) {
   if (typeof window === "undefined") return;
@@ -80,10 +82,11 @@ export function hasMessage(key: string): key is MessageKey {
   return Object.hasOwn(catalogs.en, key);
 }
 
-// translateIn never falls back to another language: both catalogs are
-// complete by construction (see catalog.ts); an unknown key renders as itself.
+// translateIn resolves key in the requested locale, falling back to English for
+// a locale whose entry is somehow missing (e.g. a not-yet-authored Japanese
+// string), then to the key itself so a lookup never renders blank.
 export function translateIn(locale: Locale, key: MessageKey, params?: MessageParams): string {
-  const message = catalogs[locale][key];
+  const message = catalogs[locale][key] ?? catalogs.en[key];
   return message === undefined ? key : interpolate(message, params);
 }
 
@@ -106,4 +109,6 @@ export function __resetLocaleForTests() {
   listeners.clear();
 }
 
-export function getIntlLocale(): string { return intlLocale(getLocale()); }
+export function getIntlLocale(): string {
+  return intlLocale(getLocale());
+}
